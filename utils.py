@@ -80,6 +80,11 @@ def material_compound(material):
 
 
 def op_master_material(op_skills):
+    """
+    calculate materials needed for operators. will NOT decompose the high lv materials into t3 materials
+    :param op_skills:
+    :return:
+    """
     # left = copy.deepcopy(owned)
     needed = defaultdict(int)
     for operator, skills in op_skills.items():
@@ -98,6 +103,12 @@ def op_master_material(op_skills):
 
 
 def op_master_needed(op_skills, owned=None):
+    """
+    in t3 materials.
+    :param op_skills:
+    :param owned:
+    :return:
+    """
     needed = op_master_material(op_skills)
     left = copy.deepcopy(owned)
     if left:
@@ -117,9 +128,7 @@ def op_master_needed(op_skills, owned=None):
 
 
 if __name__ == '__main__':
-    # r = requests.get(WIKI_PREFIX, headers=headers)
-    # soup = BeautifulSoup(r.content, features='html.parser')
-    # print(soup.h2)
+    print('testing utils.py')
     # print(material_compound('晶体电子单元'))
     # print(material_compound('D32钢'))
     # print(material_compound('双极纳米片'))
@@ -135,16 +144,16 @@ if __name__ == '__main__':
     #                        '塞雷娅': {1: (3, 1), 2: (3, 1)},
     #                        '白面鸮': {2: (3, 2)},
     #                        '夜莺': {3: 3}}))
-    print(op_master_material({'能天使': {3: (3, 2)},
-                              '塞雷娅': {1: (3, 1), 2: (3, 1)},
-                              '白面鸮': {2: (3, 1)},
-                              '夜莺': {3: 3}}))
-    print(op_master_needed({'能天使': {3: (3, 2)},
-                            '塞雷娅': {1: (3, 1), 2: (3, 1)},
-                            '白面鸮': {2: (3, 1)},
-                            '夜莺': {3: 3}}))
-    print(op_master_needed({'能天使': {3: (3, 2)},
-                            '塞雷娅': {1: (3, 1), 2: (3, 1)},
-                            '白面鸮': {2: (3, 1)},
-                            '夜莺': {3: 3}}, OWNED))
+    # print(op_master_material({'能天使': {3: (3, 2)},
+    #                           '塞雷娅': {1: (3, 1), 2: (3, 1)},
+    #                           '白面鸮': {2: (3, 1)},
+    #                           '夜莺': {3: 3}}))
+    # print(op_master_needed({'能天使': {3: (3, 2)},
+    #                         '塞雷娅': {1: (3, 1), 2: (3, 1)},
+    #                         '白面鸮': {2: (3, 1)},
+    #                         '夜莺': {3: 3}}))
+    # print(op_master_needed({'能天使': {3: (3, 2)},
+    #                         '塞雷娅': {1: (3, 1), 2: (3, 1)},
+    #                         '白面鸮': {2: (3, 1)},
+    #                         '夜莺': {3: 3}}, OWNED))
     # print(t3_owned)
